@@ -2,20 +2,14 @@
 # Daniel Ikponmwen
 #
 # A terminal-based application for computing and printing statistics based on given input.
-# You must include the main listed below. You may add your own additional classes, functions, variables, etc. 
-# You may import any modules from the standard Python library.
-# Remember to include docstrings and comments.
 
 
 
 import numpy as np
 from given_data import year_2013, year_2014, year_2015, year_2016, year_2017, year_2018, year_2019, year_2020, year_2021, year_2022
 year_2013
-# Declare any global variables needed to store the data here
 
-
-# You may add your own additional classes, functions, variables, etc.
-# School data
+# Dictionary for School data
 schools_data = {
     'school_1': {'name': 'Centennial High School', 'code': 1224},
     'school_2': {'name': 'Robert Thirsk School', 'code': 1679},
@@ -39,7 +33,7 @@ schools_data = {
     'school_20': {'name': 'Lester B. Pearson High School', 'code': 9865}
 }
 
-# Convert to 3D array where each school is a layer
+# Create 3D array with enrolments data provided 
 enrollments = np.array([
     year_2013, year_2014, year_2015, year_2016, year_2017, 
     year_2018, year_2019, year_2020, year_2021, year_2022
