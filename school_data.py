@@ -7,35 +7,36 @@
 # Remember to include docstrings and comments.
 
 
+
 import numpy as np
 from given_data import year_2013, year_2014, year_2015, year_2016, year_2017, year_2018, year_2019, year_2020, year_2021, year_2022
-
+year_2013
 # Declare any global variables needed to store the data here
 
 
 # You may add your own additional classes, functions, variables, etc.
 # School data
 schools_data = {
-    'school_1': {'name': 'Bowness High School', 'code': 1224},
-    'school_2': {'name': 'Centennial High School', 'code': 1679},
-    'school_3': {'name': 'Central Memorial High School', 'code': 9626},
-    'school_4': {'name': 'Crescent Heights High School', 'code': 9806},
-    'school_5': {'name': 'Dr. E. P. Scarlett High School', 'code': 9813},
-    'school_6': {'name': 'Ernest Manning High School', 'code': 9815},
-    'school_7': {'name': 'Forest Lawn High School', 'code': 9816},
-    'school_8': {'name': 'Henry Wise Wood High School', 'code': 9823},
-    'school_9': {'name': 'Jack James High School', 'code': 9825},
-    'school_10': {'name': 'James Fowler High School', 'code': 9826},
-    'school_11': {'name': 'John G Diefenbaker High School', 'code': 9829},
-    'school_12': {'name': 'Lester B. Pearson High School', 'code': 9830},
-    'school_13': {'name': 'Lord Beaverbrook High School', 'code': 9836},
-    'school_14': {'name': 'Louise Dean School', 'code': 9847},
-    'school_15': {'name': 'National Sport School', 'code': 9850},
-    'school_16': {'name': 'Queen Elizabeth High School', 'code': 9856},
-    'school_17': {'name': 'Robert Thirsk School', 'code': 9857},
-    'school_18': {'name': 'Sir Winston Churchill High School', 'code': 9858},
-    'school_19': {'name': 'Western Canada High School', 'code': 9860},
-    'school_20': {'name': 'William Aberhart High School', 'code': 9865}
+    'school_1': {'name': 'Centennial High School', 'code': 1224},
+    'school_2': {'name': 'Robert Thirsk School', 'code': 1679},
+    'school_3': {'name': 'Louise Dean School', 'code': 9626},
+    'school_4': {'name': 'Queen Elizabeth High School', 'code': 9806},
+    'school_5': {'name': 'Forest Lawn High School', 'code': 9813},
+    'school_6': {'name': 'Crescent Heights High School', 'code': 9815},
+    'school_7': {'name': 'Western Canada High School', 'code': 9816},
+    'school_8': {'name': 'Central Memorial High School', 'code': 9823},
+    'school_9': {'name': 'James Fowler High School', 'code': 9825},
+    'school_10': {'name': 'Ernest Manning High School', 'code': 9826},
+    'school_11': {'name': 'William Aberhart High School', 'code': 9829},
+    'school_12': {'name': 'National Sport School', 'code': 9830},
+    'school_13': {'name': 'Henry Wise Wood High School', 'code': 9836},
+    'school_14': {'name': 'Bowness High School', 'code': 9847},
+    'school_15': {'name': 'Lord Beaverbrook High School', 'code': 9850},
+    'school_16': {'name': 'Jack James High School', 'code': 9856},
+    'school_17': {'name': 'Sir Winston Churchill High School', 'code': 9857},
+    'school_18': {'name': 'Dr E. P. Scarlett High School', 'code': 9858},
+    'school_19': {'name': 'John G Diefenbaker High School', 'code': 9860},
+    'school_20': {'name': 'Lester B. Pearson High School', 'code': 9865}
 }
 
 # Convert to 3D array where each school is a layer
@@ -74,13 +75,15 @@ class SchoolEnrollmentStats:
         ValueError: If the school name or code is not valid.
         """
         if isinstance(school_identifier, int) and school_identifier in self.schools:
+            print("\n***Requested School Statistics***\n")
             school_code = school_identifier
             school_name = self.schools[school_code]['name']
         elif isinstance(school_identifier, str) and school_identifier in self.school_names:
+            print("\n***Requested School Statistics***\n")
             school_name = school_identifier
             school_code = self.school_names[school_name]
         else:
-            raise ValueError("You must enter a valid school name or code.")
+            raise ValueError("You must enter a valid school name or code.\n")
         
         index = list(self.schools.keys()).index(school_code)
         school_data = self.enrollments[:, index, :]
@@ -163,7 +166,6 @@ def main():
             user_input = input("Please enter the high school name or school code: ")
             if user_input.isdigit():
                 user_input = int(user_input)
-            print("\n***Requested School Statistics***\n")
             stats.get_school_stats(user_input)
             break
         except ValueError as e:
