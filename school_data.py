@@ -88,10 +88,10 @@ class SchoolEnrollmentStats:
         index = list(self.schools.keys()).index(school_code)
         school_data = self.enrollments[:, index, :]
         
-        print(f"School Name: {school_name} ({school_code})")
-        self._print_school_statistics(school_data)
+        print(f"School Name: {school_name}, School code: {school_code}")
+        self.print_school_statistics(school_data)
 
-    def _print_school_statistics(self, school_data):
+    def print_school_statistics(self, school_data):
         """
         Helper method to calculate and print school-specific statistics.
         
@@ -148,13 +148,14 @@ class SchoolEnrollmentStats:
         print(f"The mean enrollment in 2022: {int(mean_2022)}")
         print(f"Total graduating class of 2022: {int(total_graduating_2022)}")
         print(f"Highest enrollment for a single grade: {int(highest_enrollment)}")
-        print(f"Lowest enrollment for a single grade: {int(lowest_enrollment)}")
+        print(f"Lowest enrollment for a single grade: {int(lowest_enrollment)}\n")
 
  
 
 
 def main():
-    print("ENSF 692 School Enrollment Statistics")
+    
+    print("\nENSF 692 School Enrollment Statistics\n")
     stats = SchoolEnrollmentStats(enrollments, schools_data)
     
     # Print Stage 1 requirements here
