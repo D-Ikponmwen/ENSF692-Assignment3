@@ -33,7 +33,7 @@ schools_data = {
     'school_20': {'name': 'Lester B. Pearson High School', 'code': 9865}
 }
 
-# Create 3D array with enrolments data provided 
+# Create 3D array with enrolments data provided by reshaping list of 1D arrays
 enrollments = np.array([
     year_2013, year_2014, year_2015, year_2016, year_2017, 
     year_2018, year_2019, year_2020, year_2021, year_2022
@@ -92,16 +92,16 @@ class SchoolEnrollmentStats:
         Parameters:
         school_data (ndarray): The enrollment data for the school.
         """
-        mean_grade_10 = int(np.nanmean(school_data[:, 0]) // 1)
-        mean_grade_11 = int(np.nanmean(school_data[:, 1]) // 1)
-        mean_grade_12 = int(np.nanmean(school_data[:, 2]) // 1)
+        mean_grade_10 = int(np.nanmean(school_data[:, 0]) )
+        mean_grade_11 = int(np.nanmean(school_data[:, 1]) )
+        mean_grade_12 = int(np.nanmean(school_data[:, 2]) )
         
-        highest_enrollment =int(np.nanmax(school_data)// 1)
-        lowest_enrollment = int(np.nanmin(school_data) // 1)
+        highest_enrollment =int(np.nanmax(school_data))
+        lowest_enrollment = int(np.nanmin(school_data) )
         
         total_enrollment_yearly = np.nansum(school_data, axis=1).astype(int)
-        total_ten_year_enrollment = int(np.nansum(total_enrollment_yearly) // 1)
-        mean_total_yearly_enrollment = int(np.nanmean(total_enrollment_yearly) // 1)
+        total_ten_year_enrollment = int(np.nansum(total_enrollment_yearly) )
+        mean_total_yearly_enrollment = int(np.nanmean(total_enrollment_yearly))
         
         enrollments_over_500 = school_data[school_data > 500].astype(int)
         
@@ -125,18 +125,18 @@ class SchoolEnrollmentStats:
         if enrollments_over_500.size == 0:
             print("No enrollments over 500.")
         else:
-            median_over_500 = int(np.median(enrollments_over_500) // 1)
+            median_over_500 = int(np.median(enrollments_over_500))
             print(f"For all enrolments over 500, the median value was: {int(median_over_500)}")
 
     def print_general_stats(self):
         """
         Prints general statistics about the enrollment data.
         """
-        mean_2013 = int(np.nanmean(self.enrollments[0, :, :]) // 1)
-        mean_2022 = int(np.nanmean(self.enrollments[-1, :, :]) // 1)
-        total_graduating_2022 = int(np.nansum(self.enrollments[-1, :, 2]) // 1)
-        highest_enrollment = int(np.nanmax(self.enrollments) // 1)
-        lowest_enrollment = int(np.nanmin(self.enrollments) // 1)
+        mean_2013 = int(np.nanmean(self.enrollments[0, :, :]))
+        mean_2022 = int(np.nanmean(self.enrollments[-1, :, :]))
+        total_graduating_2022 = int(np.nansum(self.enrollments[-1, :, 2]) )
+        highest_enrollment = int(np.nanmax(self.enrollments))
+        lowest_enrollment = int(np.nanmin(self.enrollments) )
         
         print(f"The mean enrollment in 2013: {int(mean_2013)}")
         print(f"The mean enrollment in 2022: {int(mean_2022)}")
